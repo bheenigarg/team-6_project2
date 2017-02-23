@@ -6,7 +6,8 @@
 * 
 [Dataset Name] Data1
 
-[Dataset Description] Data from individual real estate transactions in Ames, IA from 2006 to 2008
+[Dataset Description] Data from individual real estate transactions in Ames, IA
+from 2006 to 2008
 
 [Experimental Unit Description] Housing Units
 
@@ -14,16 +15,21 @@
 
 [Number of Features] 23
 
-[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.xls. From SAS Exploration Resources the online data source 'Journal of Statistical Education' with the data set "Ames Housing".
+[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.
+xls. From SAS Exploration Resources the online data source 'Journal of 
+Statistical Education' with the data set "Ames Housing".
 
-[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt
+[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/Data
+Documentation.txt
 
-[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary key.
+[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary
+key.
 
 
 [Dataset Name] Data2
 
-[Dataset Description] Data from individual real estate transactions in Ames, IA from 2009 to 2010
+[Dataset Description] Data from individual real estate transactions in Ames, 
+IA from 2009 to 2010
 
 [Experimental Unit Description] Housing Units
 
@@ -31,16 +37,21 @@
 
 [Number of Features] 23
 
-[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.xls. From SAS Exploration Resources the online data source 'Journal of Statistical Education' with the data set "Ames Housing".
+[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.
+xls. From SAS Exploration Resources the online data source 'Journal of 
+Statistical Education' with the data set "Ames Housing".
 
-[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt
+[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/
+DataDocumentation.txt
 
-[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary key.
+[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary 
+key.
 
 
 [Dataset Name] Data3
 
-[Dataset Description] Data from individual real estate transactions in Ames, IA from 2006 to 2010
+[Dataset Description] Data from individual real estate transactions in Ames, 
+IA from 2006 to 2010
 
 [Experimental Unit Description] Housing Units
 
@@ -48,11 +59,15 @@
 
 [Number of Features] 16
 
-[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.xls. From SAS Exploration Resources the online data source 'Journal of Statistical Education' with the data set "Ames Housing".
+[Data Source] http://ww2.amstat.org/publications/jse/v19n3/Decock/AmesHousing.
+xls. From SAS Exploration Resources the online data source 'Journal of 
+Statistical Education' with the data set "Ames Housing".
 
-[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt
+[Data Dictionary] http://ww2.amstat.org/publications/jse/v19n3/Decock/
+DataDocumentation.txt
 
-[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary key.
+[Unique ID Schema] 'Parcel Identification Number' (PID) is used for the primary 
+key.
 ;
 
 * setup environmental parameters;
@@ -119,3 +134,37 @@ https://github.com/stat6250/team-6_project2/blob/master/data/AmesHousing_Data3.x
     &inputDataset3URL.,
     &inputDataset3Type.
 )
+
+
+* sort and check raw datasets for duplicates with respect to their unique ids,
+  removing blank rows, if needed;
+  proc sort
+        nodupkey
+        data=Data1_raw
+        dupout=Data1_raw_dups
+        out=Data1_raw_sorted
+    ;
+    by
+        PID
+    ;
+run;
+proc sort
+        nodupkey
+        data=Data2_raw
+        dupout=Data2_raw_dups
+        out=Data2_raw_sorted
+    ;
+    by
+        PID
+    ;
+run;
+proc sort
+        nodupkey
+        data=Data3_raw
+        dupout=Data3_raw_dups
+        out=Data3_raw_sorted
+    ;
+    by
+        PID
+    ;
+run;
