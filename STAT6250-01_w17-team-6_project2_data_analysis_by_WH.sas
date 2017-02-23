@@ -44,13 +44,18 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
+
+title1
 Question: What are the top 3 type of dwellings in Ames, Iowa that was involved 
 in a sale between AY 2006-2008 and AY 2009-2010? 
+;
 
+title2
 Rationale: This would help identify which type of dwellings can be considered 
 in building new future properties. 
+;
 
+*
 Note: This compares the column “MS_SubClass” in Data1 to the same column in 
 Data2.
 
@@ -63,15 +68,23 @@ proc freq data=ames_housing_analytic_file;
     format MS_SubClass dwell_typefmt.;
 run;
 
+title;
+footnote;
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
+
+title1
 Question: What are the top 3 type of exterior covering on house in Ames, Iowa 
 that was involved in a sale between AY 2006-2008 and AY 2009-2010? 
+;
 
+title2
 Rationale: This would help identify which type of exterior covering on house 
 can be considered when building new future properties. 
+;
 
 Note: This compares the column “Exterior_1st” in Data1 to the same column in 
 Data2.
