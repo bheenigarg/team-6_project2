@@ -46,13 +46,16 @@ directory, if using Windows;
 *******************************************************************************;
 
 title1
-Question: What are the top 3 type of dwellings in Ames, Iowa that was involved 
-in a sale between AY 2006-2008 and AY 2009-2010? 
+"Question: What are the top 3 type of dwellings in Ames, Iowa that was involved 
+in a sale between AY 2006-2008 and AY 2009-2010?"
 ;
 
 title2
-Rationale: This would help identify which type of dwellings can be considered 
-in building new future properties. 
+"Rationale: This would help identify which type of dwellings can be considered 
+in building new future properties."
+;
+
+footnote1
 ;
 
 *
@@ -64,7 +67,7 @@ Methodology: With ames_housing_analytic_file, use PROC FREQ on column
 ;
 
 proc freq data=ames_housing_analytic_file;
-    table MS_SubClass
+    table MS_SubClass;
     format MS_SubClass dwell_typefmt.;
 run;
 
@@ -77,15 +80,20 @@ footnote;
 *******************************************************************************;
 
 title1
-Question: What are the top 3 type of exterior covering on house in Ames, Iowa 
-that was involved in a sale between AY 2006-2008 and AY 2009-2010? 
+"Question: What are the top 3 type of exterior covering on house in Ames, Iowa 
+that was involved in a sale between AY 2006-2008 and AY 2009-2010?"
 ;
 
 title2
-Rationale: This would help identify which type of exterior covering on house 
-can be considered when building new future properties. 
+"Rationale: This would help identify which type of exterior covering on house 
+can be considered when building new future properties."
 ;
 
+footnote1
+;
+
+
+*
 Note: This compares the column “Exterior_1st” in Data1 to the same column in 
 Data2.
 
@@ -99,16 +107,27 @@ proq freq data=ames_housing_analytic_file;
     format Exterior_1st ext_1fmt.;
 run;
 
+title;
+footnote;
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1
+"Question: What is the effect of Kitchen quality to sales price of property 
+sold? Describe each Kitchen quality to the sales price."
+;
+
+title2
+"Rationale: This would help identify which Kitchen quality would be best to 
+build and suitable for homebuyers."
+;
+
+footnote1
+;
+
 *
-Question: What is the effect of Kitchen quality to sales price of property 
-sold? Describe each Kitchen quality to the sales price. 
-
-Rationale: This would help identify which Kitchen quality would be best to 
-build and suitable for homebuyers. 
-
 Note: This compares the column “KitchenQual” in Data3 to the column “SalePrice”
 in Data1 and Data2.
 
@@ -121,3 +140,6 @@ proc freq data=ames_housing_analytic_file;
     format Kitchen_Qual k_qualfmt.
            SalePrice salefmt.;
 run;
+
+title;
+footnote;
