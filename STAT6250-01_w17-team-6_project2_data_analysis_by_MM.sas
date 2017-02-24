@@ -43,37 +43,75 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-Question: Is the sale price of homes affected by the year it was built 
-and what is the average sale price for year built?
-
-Rationale: This can help to determine the general price range that homes should be listed at, based on how old the home is.
-
-Methodology:
+title1
+"Research Question 1: Is the sale price of homes affected by the year it was built and what is the average sale price for year built?"
 ;
+
+title2
+"Rationale: This can help to determine the general price range that homes should be listed at, based on how old the home is."
+;
+
+*
+Methodology: 
+;
+
+*footnote1;
+
+proc freq data = ames_housing_analytic_file order= freq;
+    tables SalePrice*Year;
+run;
+title;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1
+"Research Question 2: What additional home features (Fireplaces, Wood Deck SF, Open Porch SF, and Pool Area) affect the sale price of the home?"
+;
+
+title2
+"Rationale: The results of this analysis can help to price homes with any of these features."
+;
+
 *
-Question: What additional home features (Fireplaces, Wood Deck SF, 
-Open Porch SF, and Pool Area) affect the sale price of the home?
-
-Rationale: The results of this analysis can help to price homes with any of these features.
-
 Methodology:
 ;
+
+*footnote1;
+
+proc logistic data = ames_housing_analytic_file order= freq;
+          class SalePrice
+                Fireplaces
+                Wood_Deck_SF
+                Open_Porch_SF
+                Pool_Area / param=ref;
+	      model y = SalePrice
+                Fireplaces
+                Wood_Deck_SF
+                Open_Porch_SF
+                Pool_Area;
+run;
+title;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+title1
+"Research Question 3: How does the overall condition rating of the home relate to the sale price of the home?"
+;
+
+title2
+"Rationale: If the overall condition rating significantly affects the sale price of the home, this can be used to price future homes, as well as inform homeowners how to improve the condition of their home to increase the value."
+;
+
 *
-Question: How does the overall condition rating of the home relate 
-to the sale price of the home?
-
-Rationale: If the overall condition rating significantly affects the sale price 
-of the home, this can be used to price future homes, as well as inform homeowners 
-how to improve the condition of their home to increase the value.
-
 Methodology:
 ;
+
+*footnote;
+
+proc freq data = ames_housing_analytic_file order= freq;
+    tables SalePrice*Overall_Cond;
+run;
+title;
