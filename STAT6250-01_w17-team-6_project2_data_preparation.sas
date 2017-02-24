@@ -168,3 +168,42 @@ proc sort
         PID
     ;
 run;
+
+data ames_housing_analytic_file;
+    retain
+        MS_SubClass
+        Exterior_1st
+        Kitchen_Qual
+        SalePrice
+        Neighborhood
+        Bedroom_AbvGr
+        Year_Built
+        Fireplaces
+        Wood_Deck_SF
+        Open_Porch_SF
+        Pool_Area
+        Overall_Cond
+    ;
+    keep
+        MS_SubClass
+        Exterior_1st
+        Kitchen_Qual
+        SalePrice
+        Neighborhood
+        Bedroom_AbvGr
+        Year_Built
+        Fireplaces
+        Wood_Deck_SF
+        Open_Porch_SF
+        Pool_Area
+        Overall_Cond
+    ;
+    merge
+        Data1_raw_sorted
+        Data2_raw_sorted
+        Data3_raw_sorted
+    ;
+    by
+        PID
+    ;
+run;
