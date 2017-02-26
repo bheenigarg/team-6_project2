@@ -52,13 +52,13 @@ title2
 ;
 
 *
-Methodology: 
+Methodology: Use PROC CORR to determine the correlation between the year that the house was built and the sale price.
 ;
 
 *footnote1;
 
-proc freq data = ames_housing_analytic_file order= freq;
-    tables SalePrice*Year_Built;
+proc corr data = ames_housing_analytic_file;
+    var SalePrice*Year_Built;
 run;
 title;
 
@@ -75,7 +75,7 @@ title2
 ;
 
 *
-Methodology:
+Methodology: Use PROC CORR to compare which variables for additional home features correlate with the sale price of the home.
 ;
 
 *footnote1;
@@ -101,7 +101,7 @@ title2
 ;
 
 *
-Methodology:
+Methodology: Use PROC FREQ to view the overall conditions ratings that are associated with sale prices of homes.
 ;
 
 *footnote;
