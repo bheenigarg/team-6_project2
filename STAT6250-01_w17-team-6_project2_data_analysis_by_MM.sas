@@ -81,12 +81,12 @@ Methodology:
 *footnote1;
 
 proc logistic data = ames_housing_analytic_file;
-          class SalePrice
+          class Log_SalePrice
                 Fireplaces
                 Wood_Deck_SF
                 Open_Porch_SF
                 Pool_Area / param=ref;
-	      model y = SalePrice
+	      model y = Log_SalePrice
                 Fireplaces
                 Wood_Deck_SF
                 Open_Porch_SF
