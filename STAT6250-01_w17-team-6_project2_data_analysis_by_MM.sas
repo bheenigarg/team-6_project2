@@ -80,17 +80,12 @@ Methodology:
 
 *footnote1;
 
-proc logistic data = ames_housing_analytic_file;
-          class Log_SalePrice
-                Fireplaces
-                Wood_Deck_SF
-                Open_Porch_SF
-                Pool_Area / param=ref;
-	      model y = Log_SalePrice
-                Fireplaces
-                Wood_Deck_SF
-                Open_Porch_SF
-                Pool_Area;
+proc corr data = ames_housing_analytic_file;
+          var SalePrice
+              Fireplaces
+              Wood_Deck_SF
+              Open_Porch_SF
+              Pool_Area;
 run;
 title;
 
