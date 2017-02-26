@@ -72,19 +72,19 @@ key.
 
 * setup environmental parameters;
 %let inputDataset1URL =
-https://github.com/stat6250/team-6_project2/blob/master/data/AmesHousing_Data1.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data1.xls?raw=true
 ;
 %let inputDataset1Type = XLS;
 %let inputDataset1DSN = Data1_raw;
 
 %let inputDataset2URL =
-https://github.com/stat6250/team-6_project2/blob/master/data/AmesHousing_Data2.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data2.xls?raw=true
 ;
 %let inputDataset2Type = XLS;
 %let inputDataset2DSN = Data2_raw;
 
 %let inputDataset3URL =
-https://github.com/stat6250/team-6_project2/blob/master/data/AmesHousing_Data3.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data3.xls?raw=true
 ;
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Data3_raw;
@@ -138,7 +138,7 @@ https://github.com/stat6250/team-6_project2/blob/master/data/AmesHousing_Data3.x
 
 * sort and check raw datasets for duplicates with respect to their unique ids,
   removing blank rows, if needed;
-  proc sort
+proc sort
         nodupkey
         data=Data1_raw
         dupout=Data1_raw_dups
@@ -169,41 +169,88 @@ proc sort
     ;
 run;
 
+
+* combine 2006-08 and 2009-10 data vertically by the primary key, Parcel Identification 
+  Number(PID) retaining all 23 variables from each data set;
+data ames_housing_2006_2010;
+    set Data1_raw_sorted
+	    Data2_raw_sorted
+	;
+	by 
+	    PID
+	;
+run;
+
+
+* build analytic dataset from raw datasets with the least number of columns and
+minimal cleaning/transformation needed to address research questions in
+corresponding data-analysis files;
+proc sort
+        nodupkey
+        data=ames_housing_2006_2010
+        dupout=ames_housing_dups
+        out=ames_housing_analytic_sorted
+    ;
+    by
+        PID
+    ;
+run;
 data ames_housing_analytic_file;
-    retain
+   Log_SalePrice = log(SalePrice + 1);
+   retain
         MS_SubClass
-        Exterior_1st
-        Kitchen_Qual
-        SalePrice
         Neighborhood
+		Lot_Area
+		Land_Slope
+		Bldg_Type
+		House_Style
+		Overall_Cond
+		Roof_Style
+        Exterior_1st
+		Total_Bsmt_SF
+		Kitchen_Qual
+		Full_Bath
         Bedroom_AbvGr
+		TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
-        Overall_Cond
+        Garage_Area
+		SalePrice
+		Log_SalePrice
     ;
     keep
         MS_SubClass
-        Exterior_1st
-        Kitchen_Qual
-        SalePrice
         Neighborhood
+		Lot_Area
+		Land_Slope
+		Bldg_Type
+		House_Style
+		Overall_Cond
+		Roof_Style
+        Exterior_1st
+		Total_Bsmt_SF
+		Kitchen_Qual
+		Full_Bath
         Bedroom_AbvGr
+		TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
-        Overall_Cond
+        Garage_Area
+		SalePrice
+		Log_SalePrice
     ;
     merge
-        Data1_raw_sorted
-        Data2_raw_sorted
+        ames_housing_analytic_sorted
         Data3_raw_sorted
     ;
     by
         PID
     ;
+	if _N_ = 1 then delete;
 run;
