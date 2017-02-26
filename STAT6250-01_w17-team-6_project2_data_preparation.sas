@@ -174,7 +174,7 @@ run;
   Number(PID) retaining all 23 variables from each data set;
 data ames_housing_2006_2010;
     set Data1_raw_sorted
-	    Data2_raw_sorted
+	Data2_raw_sorted
 	;
 	by 
 	    PID
@@ -200,50 +200,50 @@ data ames_housing_analytic_file;
    retain
         MS_SubClass
         Neighborhood
-		Lot_Area
-		Land_Slope
-		Bldg_Type
-		House_Style
-		Overall_Cond
-		Roof_Style
+	Lot_Area
+	Land_Slope
+	Bldg_Type
+	House_Style
+	Overall_Cond
+	Roof_Style
         Exterior_1st
-		Total_Bsmt_SF
-		Kitchen_Qual
-		Full_Bath
+	Total_Bsmt_SF
+	Kitchen_Qual
+	Full_Bath
         Bedroom_AbvGr
-		TotRms_AbvGrd
+	TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
         Garage_Area
-		SalePrice
-		Log_SalePrice
+	SalePrice
+	Log_SalePrice
     ;
     keep
         MS_SubClass
         Neighborhood
-		Lot_Area
-		Land_Slope
-		Bldg_Type
-		House_Style
-		Overall_Cond
-		Roof_Style
+	Lot_Area
+	Land_Slope
+	Bldg_Type
+	House_Style
+	Overall_Cond
+	Roof_Style
         Exterior_1st
-		Total_Bsmt_SF
-		Kitchen_Qual
-		Full_Bath
+	Total_Bsmt_SF
+	Kitchen_Qual
+	Full_Bath
         Bedroom_AbvGr
-		TotRms_AbvGrd
+	TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
         Garage_Area
-		SalePrice
-		Log_SalePrice
+	SalePrice
+	Log_SalePrice
     ;
     merge
         ames_housing_analytic_sorted
