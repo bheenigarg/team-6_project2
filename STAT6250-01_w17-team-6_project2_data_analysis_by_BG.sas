@@ -121,18 +121,18 @@ correlations are displayed. The correlations are calculated forthe numeric varia
 ods graphics on;
 proc corr data = ames_housing_analytic_file nosimple noprob best=7;
     var Lot_Area
-		Overall_Cond
-		Total_Bsmt_SF
-		Full_Bath
+	Overall_Cond
+	Total_Bsmt_SF
+	Full_Bath
         Bedroom_AbvGr
-		TotRms_AbvGrd
+	TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
         Garage_Area
-		SalePrice;
+	SalePrice;
 run;
 ods graphics off;
 
@@ -173,18 +173,18 @@ run;
 
 proc reg data= ames_housing_analytic_file;
    model Log_SalePrice = Lot_Area
-		Overall_Cond
-		Total_Bsmt_SF
-		Full_Bath
-        Bedroom_AbvGr
-		TotRms_AbvGrd
-        Year_Built
-        Fireplaces
-        Wood_Deck_SF
-        Open_Porch_SF
-        Pool_Area
-        Garage_Area
-		SalePrice/ selection = stepwise sls = 0.1 sle = 0.1;
+		         Overall_Cond
+		         Total_Bsmt_SF
+		         Full_Bath
+                         Bedroom_AbvGr
+		         TotRms_AbvGrd
+                         Year_Built
+                         Fireplaces
+                         Wood_Deck_SF
+                         Open_Porch_SF
+                         Pool_Area
+                         Garage_Area
+		         SalePrice/ selection = stepwise sls = 0.1 sle = 0.1;
 run;
 
 title;
