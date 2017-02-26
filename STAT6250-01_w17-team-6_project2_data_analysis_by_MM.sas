@@ -7,7 +7,7 @@
 This file uses the following analytic dataset to address several research
 questions regarding housing sales in Ames, IA from 2006-2010
 
-Dataset Name: cde_2014_analytic_file created in external file
+Dataset Name: ames_housing_analytic_file created in external file
 STAT6250-01_w17-team-6_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
 
@@ -58,7 +58,7 @@ Methodology:
 *footnote1;
 
 proc freq data = ames_housing_analytic_file order= freq;
-    tables SalePrice*Year;
+    tables SalePrice*Year_Built;
 run;
 title;
 
@@ -80,7 +80,7 @@ Methodology:
 
 *footnote1;
 
-proc logistic data = ames_housing_analytic_file order= freq;
+proc logistic data = ames_housing_analytic_file;
           class SalePrice
                 Fireplaces
                 Wood_Deck_SF
@@ -111,7 +111,7 @@ Methodology:
 
 *footnote;
 
-proc freq data = ames_housing_analytic_file order= freq;
+proc freq data = ames_housing_analytic_file;
     tables SalePrice*Overall_Cond;
 run;
 title;
