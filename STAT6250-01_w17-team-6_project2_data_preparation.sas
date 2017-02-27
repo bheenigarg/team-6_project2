@@ -72,19 +72,19 @@ key.
 
 * setup environmental parameters;
 %let inputDataset1URL =
-https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data1.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/Data%20Files/AmesHousing_Data1.xls?raw=true
 ;
 %let inputDataset1Type = XLS;
 %let inputDataset1DSN = Data1_raw;
 
 %let inputDataset2URL =
-https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data2.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/Data%20Files/AmesHousing_Data2.xls?raw=true
 ;
 %let inputDataset2Type = XLS;
 %let inputDataset2DSN = Data2_raw;
 
 %let inputDataset3URL =
-https://github.com/stat6250/team-6_project2/blob/master/AmesHousing_Data3.xls?raw=true
+https://github.com/stat6250/team-6_project2/blob/master/Data%20Files/AmesHousing_Data3.xls?raw=true
 ;
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Data3_raw;
