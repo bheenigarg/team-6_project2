@@ -57,11 +57,19 @@ around the average sale price of properties sold in Ames, IA."
 ;
 
 footnote1
+"With properties sold in Ames, IA between AY 2006-2010, minimum price sold for
+a property was $12,789 and maximum price sold was $755,000."
 ;
 
-*
-Note: This compares the column “SalePrice” in Data1 to the same column in 
-Data2.
+footnote2
+"Out of 2,930 observation properties sold in Ames, IA, the average sales price 
+is $180,796.06."
+;
+
+footnote3
+"This compares the column “SalePrice” in Data1 to the same column in 
+Data2."
+;
 
 Methodology: With ames_housing_analytic_file, use PROC MEANS on column 
 "SalePrice" and obtain the average sale price of properties sold in Ames, IA.
