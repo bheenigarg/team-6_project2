@@ -58,7 +58,8 @@ Methodology: Use PROC CORR to determine the correlation between the year that th
 *footnote1;
 
 proc corr data = ames_housing_analytic_file;
-    var SalePrice*Year_Built;
+    var SalePrice
+        Year_Built;
 run;
 title;
 
@@ -80,7 +81,7 @@ Methodology: Use PROC FREQ to compare which variables for additional home featur
 
 *footnote1;
 
-proc freq data = ames_housing_analytic_file descending;
+proc freq data = ames_housing_analytic_file;
           tables Fireplaces*SalePrice/nocum norow nocol;
           format SalePrice spfmt.;
 run;
@@ -103,7 +104,7 @@ Methodology: Use PROC FREQ to view the overall conditions ratings that are assoc
 
 *footnote;
 
-proc freq data = ames_housing_analytic_file descending;
+proc freq data = ames_housing_analytic_file;
     tables Overall_Cond*SalePrice/nocum norow nocol;
     format SalePrice spfmt.;
 run;
