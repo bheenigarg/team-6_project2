@@ -67,7 +67,7 @@ Methodology: With ames_housing_analytic_file, use PROC FREQ on column
 ;
  
 proc means data=ames_housing_analytic_file;
-    var MS_SubClass;
+    var SalePrice;
 run;
 
 
