@@ -51,6 +51,22 @@ title2
 "Rationale: This can help to determine how to price homes based on the available garage space."
 ;
 
+footnote1
+"The results indicate that there is a moderate correlation between the garage space and the sale price of the home."
+;
+
+footnote2
+"The garage area correlated with sale price with a Pearson Coefficient of 0.640 and is statistically significant (<.0001)."
+;
+
+footnote3
+"The number of cars that can fit in the garage correlated with sale price at 0.648 and is statistically significant (<.0001)."
+;
+
+footnote4
+"Because the number of cars has a slightly higher correlation, it may be more suitable for using to price homes over the actual area of the garage."
+;
+
 *
 Methodology: Use PROC CORR to determine the correlation between the number of cars that can fit in the garage, total garage space, and the sale price.
 ;
@@ -63,6 +79,7 @@ proc corr data = ames_housing_analytic_file;
         Garage_Cars;
 run;
 title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -74,6 +91,26 @@ title1
 
 title2
 "Rationale: The results of this analysis can help to price homes based on if they have a central air unit."
+;
+
+footnote1
+"The majority (93.31%) of the homes sold in this data set did have a central air unit."
+;
+
+footnote2
+"However, this analysis shows that the 196 homes without central air did not have the potential to sell for as high of a price."
+;
+
+footnote3
+"All the homes that sold without a central air unit were sold for under $300,000 with more than half falling under $100,000."
+;
+
+footnote4
+"This information shows that a central air unit can impact the sale price of the home."
+;
+
+footnote5
+"This can be used to inform sellers of the potential for a higher selling price if a central air unit is installed."
 ;
 
 *
@@ -88,6 +125,7 @@ proc freq data = ames_housing_analytic_file;
                  Central_Air $cafmt.;
 run;
 title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
