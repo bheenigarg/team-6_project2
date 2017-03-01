@@ -75,17 +75,14 @@ title2
 ;
 
 *
-Methodology: Use PROC CORR to compare which variables for additional home features correlate with the sale price of the home.
+Methodology: Use PROC FREQ to compare which variables for additional home features correlate with the sale price of the home.
 ;
 
 *footnote1;
 
-proc corr data = ames_housing_analytic_file;
-          var SalePrice
-              Fireplaces
-              Wood_Deck_SF
-              Open_Porch_SF
-              Pool_Area;
+proc freq data = ames_housing_analytic_file descending;
+          tables Fireplaces*SalePrice/nocum norow nocol;
+          format SalePrice $spfmt.;
 run;
 title;
 
@@ -106,7 +103,8 @@ Methodology: Use PROC FREQ to view the overall conditions ratings that are assoc
 
 *footnote;
 
-proc freq data = ames_housing_analytic_file;
-    tables SalePrice*Overall_Cond;
+proc freq data = ames_housing_analytic_file descending;
+    tables Overall_Cond*SalePrice/nocum norow nocol;
+    format SalePrice $spfmt.;
 run;
 title;
