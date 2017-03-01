@@ -71,6 +71,7 @@ footnote3
 Data2."
 ;
 
+*
 Methodology: With ames_housing_analytic_file, use PROC MEANS on column 
 "SalePrice" and obtain the average sale price of properties sold in Ames, IA.
 ;
@@ -99,13 +100,21 @@ can be considered when building new future properties."
 ;
 
 footnote1
+"The top 3 type of exterior coverings sold in Ames, IA ,in order from
+best to least, were Vinyl Siding, Metal Siding, and Hard Board."
 ;
 
+footnote2
+"Vinyl Siding had 1,026 properties sold. Metal Siding had 450 properties sold.
+ Hard Board had 442 properties sold."
+;
+
+footnote3
+"This compares the column “Exterior_1st” in Data1 to the same column in 
+Data2."
+;
 
 *
-Note: This compares the column “Exterior_1st” in Data1 to the same column in 
-Data2.
-
 Methodology: With utilizing ames_housing_analytic_file, PROC FREQ will be used
 to obtain the percentages of column "Exterior_1st". In this way, the top 3 type 
 of exterior covering can be shown.
@@ -143,9 +152,9 @@ Methodology: With analyzing all 3 data sets, PROC FREQ will be used to see
 the % effects of "KitchenQual" to "SalePrice". 
 ;
 
-proc freq data=ames_housing_analytic_file;
-    tables Kitchen_Qual*SalePrice;
-    format SalePrice spfmt;
+proc corr data=ames_housing_analytic_file;
+    var Kitchen_Qual
+        SalePrice
 run;
 
 title;
