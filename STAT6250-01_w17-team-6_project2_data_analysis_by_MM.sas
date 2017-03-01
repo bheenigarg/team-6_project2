@@ -82,7 +82,7 @@ Methodology: Use PROC FREQ to compare which variables for additional home featur
 *footnote1;
 
 proc freq data = ames_housing_analytic_file;
-          tables Fireplaces*SalePrice/nocum norow nocol list;
+          tables SalePrice*Fireplaces/nocum norow nocol;
           format SalePrice spfmt.;
 run;
 title;
