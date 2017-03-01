@@ -196,6 +196,24 @@ proc format ;
 		   
    value $cafmt 'Y' = '1'
 	        'N'  = '0';
+	
+   value dwellfmt '020' = '1-Story 1946 & newer all styles'
+                  '030' = '1-Story 1945 & older'
+		  '040' = '1-Story w/finished attic all ages'
+		  '045' = '1.5 Story - unfinished all ages'
+		  '050' = '1.5 Story finished all ages'
+		  '060' = '2-Story 1946 & newer'
+		  '070' = '2-Story 1945 & older'
+		  '075' = '2.5 Story all ages'
+		  '080' = 'Split or Multi-Level'
+		  '085' = 'Split Foyer'
+		  '090' = 'Duplex - all styles and ages'
+		  '120' = '1-Story PUD 1946 & newer'
+		  '150' = '1.5 Story PUD - all ages'
+		  '160' = '2-Story PUD - 1946 & newer'
+		  '180' = 'PUD - Multilevel - incl split Lev/Foyer'
+		  '190' = '2 Family Conversion - all styles and ages'
+		  
 run;
 
 * build analytic dataset from raw datasets with the least number of columns and
