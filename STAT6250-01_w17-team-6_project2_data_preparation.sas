@@ -226,6 +226,7 @@ data ames_housing_analytic_file;
         Bedroom_AbvGr
 	TotRms_AbvGrd
         Year_Built
+	Yr_Sold
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
@@ -250,6 +251,7 @@ data ames_housing_analytic_file;
         Bedroom_AbvGr
 	TotRms_AbvGrd
         Year_Built
+	Yr_Sold
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
