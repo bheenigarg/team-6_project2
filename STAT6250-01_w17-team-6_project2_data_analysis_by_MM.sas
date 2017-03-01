@@ -82,7 +82,7 @@ Methodology: Use PROC FREQ to compare which variables for additional home featur
 
 proc freq data = ames_housing_analytic_file descending;
           tables Fireplaces*SalePrice/nocum norow nocol;
-          format SalePrice $spfmt.;
+          format SalePrice spfmt.;
 run;
 title;
 
@@ -105,6 +105,6 @@ Methodology: Use PROC FREQ to view the overall conditions ratings that are assoc
 
 proc freq data = ames_housing_analytic_file descending;
     tables Overall_Cond*SalePrice/nocum norow nocol;
-    format SalePrice $spfmt.;
+    format SalePrice spfmt.;
 run;
 title;
