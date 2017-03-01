@@ -181,6 +181,19 @@ data ames_housing_2006_2010;
 	;
 run;
 
+proc format ;
+  value spfmt low- 99999 = 'Less than $100,000'
+	           100000 - 199999 = '$100,000 to $199,999'
+	           200000 - 299999 = '$200,000 to $299,999'
+		   300000 - 399999 = '$300,000 to $399,999'
+		   400000 - 499999 = '$400,000 to $499,999'
+		   500000 - 599999 = '$500,000 to $599,999'
+		   600000 - 699999 = '$600,000 to $699,999'
+		   700000 - 799999 = '$700,000 to $799,999'
+		   800000 - 899999 = '$800,000 to $899,999'
+		   900000 - 999999 = '$900,000 to $999,999'
+		   1000000 - high = 'More than $1 million';
+
 
 * build analytic dataset from raw datasets with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
