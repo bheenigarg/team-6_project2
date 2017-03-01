@@ -74,6 +74,8 @@ proc sort data=ames_housing_analytic_file;
     by descending MS_SubClass;
 run;
 
+proc print data=ames_housing_analytic_file;
+    var MS_SubClass;
 
 title;
 footnote;
