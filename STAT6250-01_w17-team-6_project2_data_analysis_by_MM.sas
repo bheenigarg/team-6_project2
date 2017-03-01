@@ -44,22 +44,23 @@ directory, if using Windows;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1
-"Research Question 1: How are housing sales changing over time and can this be used to help predict future home pricing?"
+"Research Question 1: Does the size of the garage and the number of cars that can be parked in it, correlate with sale price?"
 ;
 
 title2
-"Rationale: This can help to determine how the sale price of homes varies by the year they are sold.."
+"Rationale: This can help to determine how to price homes based on the available garage space."
 ;
 
 *
-Methodology: Use PROC CORR to determine the correlation between the year that the house was sold and the sale price.
+Methodology: Use PROC CORR to determine the correlation between the number of cars that can fit in the garage, total garage space, and the sale price.
 ;
 
 *footnote1;
 
 proc corr data = ames_housing_analytic_file;
     var SalePrice
-        Yr_Sold;
+        Garage_Area
+        Garage_Cars;
 run;
 title;
 
