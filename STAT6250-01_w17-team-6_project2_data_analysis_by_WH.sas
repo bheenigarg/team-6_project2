@@ -65,10 +65,15 @@ Data2.
 Methodology: With ames_housing_analytic_file, use PROC FREQ on column 
 "MS_SubClass" and obtain the top 3 types of dwelling sold by viewing percentage.
 ;
-
+    
 proc freq data=ames_housing_analytic_file;
     table MS_SubClass;
 run;
+
+proc sort data=ames_housing_analytic_file;
+    by descending MS_SubClass;
+run;
+
 
 title;
 footnote;
@@ -105,6 +110,10 @@ proq freq data=ames_housing_analytic_file;
     table Exterior_1st;
 run;
 
+proq sort data=ames_housing_analytic_file;
+    descending Exterior_1st;
+run;
+
 title;
 footnote;
 
@@ -134,7 +143,8 @@ the % effects of "KitchenQual" to "SalePrice".
 ;
 
 proc freq data=ames_housing_analytic_file;
-    tables Kitchen_Qual*spfmt;
+    tables Kitchen_Qual*SalePrice;
+    format SalePrice spfmt;
 run;
 
 title;
