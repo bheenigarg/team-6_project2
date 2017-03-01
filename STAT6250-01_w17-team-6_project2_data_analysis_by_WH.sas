@@ -68,14 +68,9 @@ Methodology: With ames_housing_analytic_file, use PROC FREQ on column
     
 proc freq data=ames_housing_analytic_file;
     table MS_SubClass;
+    format MS_SubClass dwellfmt;
 run;
 
-proc sort data=ames_housing_analytic_file;
-    by descending MS_SubClass;
-run;
-
-proc print data=ames_housing_analytic_file;
-    var MS_SubClass;
 
 title;
 footnote;
@@ -110,10 +105,6 @@ of exterior covering can be shown.
 
 proq freq data=ames_housing_analytic_file;
     table Exterior_1st;
-run;
-
-proq sort data=ames_housing_analytic_file;
-    descending Exterior_1st;
 run;
 
 title;
