@@ -236,6 +236,7 @@ data ames_housing_analytic_file;
         Open_Porch_SF
         Pool_Area
         Garage_Area
+	Garage_Cars
 	SalePrice
 	Log_SalePrice
     ;
@@ -262,6 +263,7 @@ data ames_housing_analytic_file;
         Open_Porch_SF
         Pool_Area
         Garage_Area
+	Garage_Cars
 	SalePrice
 	Log_SalePrice
     ;
