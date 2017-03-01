@@ -66,10 +66,6 @@ Methodology: With ames_housing_analytic_file, use PROC FREQ on column
 "MS_SubClass" and obtain the top 3 types of dwelling sold by viewing percentage.
 ;
  
-proc sort data=ames_housing_analytic_file;
-    by MS_SubClass;
-run;
-
 proc means data=ames_housing_analytic_file;
     var MS_SubClass;
 run;
