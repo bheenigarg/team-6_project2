@@ -212,7 +212,7 @@ proc format ;
 		  '150' = '1.5 Story PUD - all ages'
 		  '160' = '2-Story PUD - 1946 & newer'
 		  '180' = 'PUD - Multilevel - incl split Lev/Foyer'
-		  '190' = '2 Family Conversion - all styles and ages'
+		  '190' = '2 Family Conversion - all styles and ages';
 		  
 run;
 
