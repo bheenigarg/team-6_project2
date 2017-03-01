@@ -46,24 +46,25 @@ directory, if using Windows;
 *******************************************************************************;
 
 title1
-"Question: What are the top 3 type of dwellings in Ames, Iowa that was involved 
-in a sale between AY 2006-2008 and AY 2009-2010?"
+"Question: What is the average sale price of properties sold in Ames, Iowa
+between AY 2006-2008 and AY 2009-2010?"
 ;
 
 title2
-"Rationale: This would help identify which type of dwellings can be considered 
-in building new future properties."
+"Rationale: This would help brokers to know the average sale price buyers are 
+willing to spend. Also, property builders can consider building new properties 
+around the average sale price of properties sold in Ames, IA."
 ;
 
 footnote1
 ;
 
 *
-Note: This compares the column “MS_SubClass” in Data1 to the same column in 
+Note: This compares the column “SalePrice” in Data1 to the same column in 
 Data2.
 
-Methodology: With ames_housing_analytic_file, use PROC FREQ on column 
-"MS_SubClass" and obtain the top 3 types of dwelling sold by viewing percentage.
+Methodology: With ames_housing_analytic_file, use PROC MEANS on column 
+"SalePrice" and obtain the average sale price of properties sold in Ames, IA.
 ;
  
 proc means data=ames_housing_analytic_file;
