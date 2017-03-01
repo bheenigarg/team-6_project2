@@ -68,7 +68,6 @@ Methodology: With ames_housing_analytic_file, use PROC FREQ on column
 
 proc freq data=ames_housing_analytic_file;
     table MS_SubClass;
-    format MS_SubClass dwell_typefmt.;
 run;
 
 title;
@@ -103,8 +102,7 @@ of exterior covering can be shown.
 ;
 
 proq freq data=ames_housing_analytic_file;
-    table Exterior_1st
-    format Exterior_1st ext_1fmt.;
+    table Exterior_1st;
 run;
 
 title;
@@ -136,9 +134,7 @@ the % effects of "KitchenQual" to "SalePrice".
 ;
 
 proc freq data=ames_housing_analytic_file;
-    tables Kitchen_Qual*SalePrice;
-    format Kitchen_Qual k_qualfmt.
-           SalePrice salefmt.;
+    tables Kitchen_Qual*spfmt;
 run;
 
 title;
