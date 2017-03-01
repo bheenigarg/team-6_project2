@@ -193,7 +193,10 @@ proc format ;
 		   800000 - 899999 = '$800,000 to $899,999'
 		   900000 - 999999 = '$900,000 to $999,999'
 		   1000000 - high = 'More than $1 million';
-
+		   
+   value $cafmt 'Y' = '1'
+	        'N'  = '0';
+run;
 
 * build analytic dataset from raw datasets with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
@@ -215,6 +218,7 @@ data ames_housing_analytic_file;
         Neighborhood
 	Lot_Area
 	Land_Slope
+	Central_Air
 	Bldg_Type
 	House_Style
 	Overall_Cond
@@ -240,6 +244,7 @@ data ames_housing_analytic_file;
         Neighborhood
 	Lot_Area
 	Land_Slope
+	Central_Air
 	Bldg_Type
 	House_Style
 	Overall_Cond
