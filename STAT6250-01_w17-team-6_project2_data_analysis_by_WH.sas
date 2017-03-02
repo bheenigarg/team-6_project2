@@ -142,11 +142,12 @@ SalePrice of sold properties in Ames, IA AY 2006-2010."
 ;
 
 footnote1
-""
+"Open Porch had an average of 47.53 square feet sold and Sale Price had an 
+average of $180,796 sold"
 ;
 
 footnote2
-""
+"For every .31 Open Porch square feet sold, Sale Price goes up by 1 unit $."
 ;
 
 footnote3
