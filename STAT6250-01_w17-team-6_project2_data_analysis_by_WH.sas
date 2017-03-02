@@ -132,18 +132,21 @@ footnote;
 *******************************************************************************;
 
 title1
-"Question: What is the effect of Kitchen quality to sales price of property 
-sold? Describe each Kitchen quality to the sales price."
+"Question: Is there any correlation between Yr_Sold and SalePrice of properties 
+sold? If there is any correlation, please explain the correlation?"
 ;
 
 title2
-"Rationale: This would help identify which Kitchen quality would be best to 
-build and suitable for homebuyers."
+"Rationale: This would help identify the impact of Yr_Sold to the SalePrice of 
+sold properties in Ames, IA AY 2006-2010."
 ;
 
 footnote1
+"The average year sold is 2008, and the average sale price is $180,796."
 ;
 
+footnote2
+"
 *
 Note: This compares the column “KitchenQual” in Data3 to the column “SalePrice”
 in Data1 and Data2.
@@ -153,7 +156,7 @@ the % effects of "KitchenQual" to "SalePrice".
 ;
 
 proc corr data=ames_housing_analytic_file;
-    var Yr_Sold
+    var Full_Bath
         SalePrice;
 run;
 
