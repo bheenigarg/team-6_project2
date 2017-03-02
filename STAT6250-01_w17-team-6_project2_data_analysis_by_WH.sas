@@ -120,7 +120,7 @@ to obtain the percentages of column "Exterior_1st". In this way, the top 3 type
 of exterior covering can be shown.
 ;
 
-proq freq data=ames_housing_analytic_file;
+proq freq data=ames_housing_analytic_file order=freq;
     table Exterior_1st/list;
 run;
 
