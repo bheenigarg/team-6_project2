@@ -156,7 +156,7 @@ the % effects of "KitchenQual" to "SalePrice".
 ;
 
 proc corr data=ames_housing_analytic_file;
-    var Full_Bath
+    var Open_Porch_SF
         SalePrice;
 run;
 
