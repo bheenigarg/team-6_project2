@@ -46,29 +46,38 @@ directory, if using Windows;
 *******************************************************************************;
 
 title1
-"Question: What are the top 3 type of dwellings in Ames, Iowa that was involved 
-in a sale between AY 2006-2008 and AY 2009-2010?"
+"Question: What is the average sale price of properties sold in Ames, Iowa
+between AY 2006-2008 and AY 2009-2010?"
 ;
 
 title2
-"Rationale: This would help identify which type of dwellings can be considered 
-in building new future properties."
+"Rationale: This would help brokers to know the average sale price buyers are 
+willing to spend. Also, property builders can consider building new properties 
+around the average sale price of properties sold in Ames, IA."
 ;
 
 footnote1
+"With properties sold in Ames, IA between AY 2006-2010, minimum price sold for
+a property was $12,789 and maximum price sold was $755,000."
+;
+
+footnote2
+"Out of 2,930 observation properties sold in Ames, IA, the average sales price 
+is $180,796.06."
+;
+
+footnote3
+"This compares the column “SalePrice” in Data1 to the same column in 
+Data2."
 ;
 
 *
-Note: This compares the column “MS_SubClass” in Data1 to the same column in 
-Data2.
-
-Methodology: With ames_housing_analytic_file, use PROC FREQ on column 
-"MS_SubClass" and obtain the top 3 types of dwelling sold by viewing percentage.
+Methodology: With ames_housing_analytic_file, use PROC MEANS on column 
+"SalePrice" and obtain the average sale price of properties sold in Ames, IA.
 ;
-    
-proc freq data=ames_housing_analytic_file;
-    table MS_SubClass;
-    format MS_SubClass dwellfmt;
+ 
+proc means data = ames_housing_analytic_file;
+    var SalePrice;
 run;
 
 
@@ -91,20 +100,28 @@ can be considered when building new future properties."
 ;
 
 footnote1
+"The top 3 type of exterior coverings sold in Ames, IA ,in order from
+best to least, were Vinyl Siding, Metal Siding, and Hard Board."
 ;
 
+footnote2
+"Vinyl Siding had 1,026 properties sold. Metal Siding had 450 properties sold.
+ Hard Board had 442 properties sold."
+;
+
+footnote3
+"This compares the column “Exterior_1st” in Data1 to the same column in 
+Data2."
+;
 
 *
-Note: This compares the column “Exterior_1st” in Data1 to the same column in 
-Data2.
-
 Methodology: With utilizing ames_housing_analytic_file, PROC FREQ will be used
 to obtain the percentages of column "Exterior_1st". In this way, the top 3 type 
 of exterior covering can be shown.
 ;
 
-proq freq data=ames_housing_analytic_file;
-    table Exterior_1st;
+proq freq data = ames_housing_analytic_file order=freq;
+    table Exterior_1st/list;
 run;
 
 title;
@@ -115,29 +132,37 @@ footnote;
 *******************************************************************************;
 
 title1
-"Question: What is the effect of Kitchen quality to sales price of property 
-sold? Describe each Kitchen quality to the sales price."
+"Question: Is there any correlation between an Open Porch and SalePrice of 
+properties sold? If there is any correlation, please explain the correlation?"
 ;
 
 title2
-"Rationale: This would help identify which Kitchen quality would be best to 
-build and suitable for homebuyers."
+"Rationale: This would help identify the impact of an Open Porch to the 
+SalePrice of sold properties in Ames, IA AY 2006-2010."
 ;
 
 footnote1
+"Open Porch had an average of 47.53 square feet sold and Sale Price had an 
+average of $180,796 sold"
+;
+
+footnote2
+"For every .31 Open Porch square feet sold, Sale Price goes up by 1 unit $."
+;
+
+footnote3
+"This compares the column “Open_Porch_SF” in Data3 to the column “SalePrice”
+in Data1 and Data2."
 ;
 
 *
-Note: This compares the column “KitchenQual” in Data3 to the column “SalePrice”
-in Data1 and Data2.
-
-Methodology: With analyzing all 3 data sets, PROC FREQ will be used to see
-the % effects of "KitchenQual" to "SalePrice". 
+Methodology: With analyzing all 3 data sets, PROC CORR will be used to see
+the correlation effects of "Open_Porch_SF" to "SalePrice". 
 ;
 
-proc freq data=ames_housing_analytic_file;
-    tables Kitchen_Qual*SalePrice;
-    format SalePrice spfmt;
+proc corr data = ames_housing_analytic_file;
+    var Open_Porch_SF
+        SalePrice;
 run;
 
 title;
