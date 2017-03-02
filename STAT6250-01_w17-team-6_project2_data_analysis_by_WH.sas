@@ -154,7 +154,7 @@ the % effects of "KitchenQual" to "SalePrice".
 
 proc corr data=ames_housing_analytic_file;
     var KitchenQual
-        SalePrice
+        SalePrice;
 run;
 
 title;
