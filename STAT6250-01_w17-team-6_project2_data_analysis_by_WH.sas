@@ -132,27 +132,30 @@ footnote;
 *******************************************************************************;
 
 title1
-"Question: Is there any correlation between Yr_Sold and SalePrice of properties 
-sold? If there is any correlation, please explain the correlation?"
+"Question: Is there any correlation between an Open Porch and SalePrice of 
+properties sold? If there is any correlation, please explain the correlation?"
 ;
 
 title2
-"Rationale: This would help identify the impact of Yr_Sold to the SalePrice of 
-sold properties in Ames, IA AY 2006-2010."
+"Rationale: This would help identify the impact of an Open Porch to the 
+SalePrice of sold properties in Ames, IA AY 2006-2010."
 ;
 
 footnote1
-"The average year sold is 2008, and the average sale price is $180,796."
+""
 ;
 
 footnote2
-"
-*
-Note: This compares the column “KitchenQual” in Data3 to the column “SalePrice”
+""
+;
+
+footnote3
+"This compares the column “Open_Porch_SF” in Data3 to the column “SalePrice”
 in Data1 and Data2.
 
-Methodology: With analyzing all 3 data sets, PROC FREQ will be used to see
-the % effects of "KitchenQual" to "SalePrice". 
+*
+Methodology: With analyzing all 3 data sets, PROC CORR will be used to see
+the correlation effects of "Open_Porch_SF" to "SalePrice". 
 ;
 
 proc corr data=ames_housing_analytic_file;
