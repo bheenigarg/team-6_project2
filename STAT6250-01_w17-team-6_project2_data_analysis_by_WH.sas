@@ -152,6 +152,7 @@ footnote2
 footnote3
 "This compares the column “Open_Porch_SF” in Data3 to the column “SalePrice”
 in Data1 and Data2.
+;
 
 *
 Methodology: With analyzing all 3 data sets, PROC CORR will be used to see
