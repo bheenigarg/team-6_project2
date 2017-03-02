@@ -76,7 +76,7 @@ Methodology: With ames_housing_analytic_file, use PROC MEANS on column
 "SalePrice" and obtain the average sale price of properties sold in Ames, IA.
 ;
  
-proc means data=ames_housing_analytic_file;
+proc means data = ames_housing_analytic_file;
     var SalePrice;
 run;
 
@@ -120,7 +120,7 @@ to obtain the percentages of column "Exterior_1st". In this way, the top 3 type
 of exterior covering can be shown.
 ;
 
-proq freq data=ames_housing_analytic_file order=freq;
+proq freq data = ames_housing_analytic_file order=freq;
     table Exterior_1st/list;
 run;
 
@@ -160,7 +160,7 @@ Methodology: With analyzing all 3 data sets, PROC CORR will be used to see
 the correlation effects of "Open_Porch_SF" to "SalePrice". 
 ;
 
-proc corr data=ames_housing_analytic_file;
+proc corr data = ames_housing_analytic_file;
     var Open_Porch_SF
         SalePrice;
 run;
