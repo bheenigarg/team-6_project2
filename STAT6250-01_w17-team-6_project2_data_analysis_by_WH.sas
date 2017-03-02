@@ -151,7 +151,7 @@ footnote2
 
 footnote3
 "This compares the column “Open_Porch_SF” in Data3 to the column “SalePrice”
-in Data1 and Data2.
+in Data1 and Data2."
 ;
 
 *
