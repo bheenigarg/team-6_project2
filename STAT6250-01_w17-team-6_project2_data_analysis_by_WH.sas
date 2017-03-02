@@ -121,7 +121,7 @@ of exterior covering can be shown.
 ;
 
 proq freq data=ames_housing_analytic_file;
-    table Exterior_1st;
+    table Exterior_1st/list;
 run;
 
 title;
