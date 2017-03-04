@@ -95,7 +95,7 @@ run;
 
 proc print data=ames_housing_temp;
     var Neighborhood SalePrice;
-	format Neighborhood $neighborfmt. SalePrice comma7.;
+	format Neighborhood $neighborfmt. ;
 run;
 
 
