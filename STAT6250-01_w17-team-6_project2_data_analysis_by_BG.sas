@@ -51,11 +51,23 @@ title2
 "Rationale: This analysis will help identify expensive and cheaper neighborhoods."
 ;
 
-footnote1
-"Plotting the boxplot between neighborhoods and sale price shows that Meadow Village, Briardale and Iowa DOT and Rail Road are among the cheapest neighborhoods. While Northridge, Northridge Heights and Stone Brook are rich neighborhoods with several outliers in terms of price."
+title3
+"The table shows the average sale price for each neighborhood with decreasing sale price."
 ;
 
-footnote2
+title4
+"Boxplots of Sale Price vs Neighborhoods"
+;
+
+footnote1
+"The table and boxplots show same results"
+;
+
+footnote3
+"It can be noted from the table and boxplots that Meadow Village, Briardale and Iowa DOT and Rail Road are among the cheapest neighborhoods. While Northridge, Northridge Heights and Stone Brook are rich neighborhoods with several outliers in terms of price."
+;
+
+footnote4
 "It can also be noted that many of the rich neighborhoods have high variability in sale prices which means that they have sale prices varying from relatively low to very high."
 ;
 
@@ -64,6 +76,8 @@ Methodology: Proc means is used to calculate the average selling price in each n
 Proc sort and print is used to sort and print the means in descending order. 
 
 Proc sgplot to create boxplots is used to graph the average selling price for each neighborhood.
+The boxplots indicate the means, medians, standard deviations, interquartile ranges, maximums,
+minimums and outliers.
 ;
 proc means
         mean
@@ -81,6 +95,7 @@ run;
 
 proc print data=ames_housing_temp;
     var Neighborhood SalePrice;
+	format Neighborhood $neighborfmt. SalePrice comma7.;
 run;
 
 
@@ -98,44 +113,65 @@ footnote;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1
-"Research Question: What are the variables that are highly correlated and their relevance in terms of selling prices?"
+"Research Question: How are the different features related to the selling price of the house and how are related to each other?"
 ;
 
 title2
-"Rationale: Correlations between variables will help in establishing hidden trends in the data and also point out redundant or uninformative variables."
+"Rationale: Identifying correlations between variables will help in establishing hidden trends in the data and also point out redundant or uninformative variables."
 ;
 
 footnote1
-"There is a strong positive correlation between Sale Price and Total Basement Surface (0.63)."
+"There is a somewhat strong positive correlation between Sale Price and Size of garage area(sq ft):0.64 and Sale Price and Total basement area(sq ft): 0.63"
 ;
 
 footnote2
-"There is a slight negative correlation between Sale Price and Overall Condition. It seems that recently bult houses tend to be in worse Overall Condition."
+"There is a moderate positive relationship between Sale Price and Original Year of construction: 0.56, Sale Price and Full bathrooms above grade: 0.55 Total and Sale Price and Total Rooms above grade: 0.50(approx)."
+;
+
+footnote3
+"The strong and moderate relationships between Sale Price of a house and other features indicate that they are important in determining the selling price of a house"
+;
+
+footnote4
+"There is a slight negative correlation between Sale Price and Overall Condition: -0.37. It seems that recently built houses tend to be in worse Overall Condition."
+;
+
+footnote5
+"Among the features, it can be noted that there is a strong relationship between Bedrooms above grade and Total rooms above grade: 0.67 and moderate relationship between Total rooms above grade and Full bathrooms above grade: 0.53. This indicates multicollinearity that is there is no new information being added by introducing a new variable(Total bedrooms or Full bathrooms) than already explained by the variable Total rooms above grade."
 ;
 
 *
 Methodology: PROC CORR is used to calculate the correlation coefficients where Pearson 
-correlations are displayed. The correlations are calculated forthe numeric variables in the dataset.
+correlations are displayed. The correlations are calculated just for the numeric variables in the dataset.
 ;
-
-ods graphics on;
 proc corr data = ames_housing_analytic_file nosimple noprob best=7;
     var Lot_Area
-		Overall_Cond
-		Total_Bsmt_SF
-		Full_Bath
+	    Overall_Cond
+	    Total_Bsmt_SF
+	    Full_Bath
         Bedroom_AbvGr
-		TotRms_AbvGrd
+	    TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
         Garage_Area
-		SalePrice;
-run;
-ods graphics off;
+	    SalePrice;
 
+	label Lot_Area = 'Lot size in square feet'
+	     Overall_Cond = 'Rates the overall material and finish of the house'
+	     Total_Bsmt_SF = 'Total square feet of basement area'
+	    Full_Bath = 'Full bathrooms above grade'
+        Bedroom_AbvGr = 'Bedrooms above grade'
+	    TotRms_AbvGrd = 'Total rooms above grade'
+        Year_Built = 'Original construction year'
+        Fireplaces = 'Number of fireplaces'
+        Wood_Deck_SF = 'Wood deck area in square feet'
+        Open_Porch_SF = 'Open porch area in square feet'
+        Pool_Area = 'Pool area in square feet'
+        Garage_Area = 'Size of garage in square feet';
+run;
 title;
 footnote;
 
@@ -152,7 +188,11 @@ title2
 ;
 
 footnote1
-"Using the stepwise selection technique, the most significant variables at alpha level 0.1 are SalePrice, Year_Built, Full_Bath, Garage_Area, Fireplaces, Pool Area, Overall_Cond, TotRms_AbvGrd and Bedroom_AbvGr."
+"The model overall is significant at alpha level 0.05 with p-value < 0.0001."
+;
+ 
+footnote1
+"Using the stepwise selection technique, the most significant variables at alpha level 0.10 are Year Built, Total Rooms, Garage Area, Fireplaces, Total basement area, Full Bathrooms, Bedrooms ,Pool Area, Lot Area and Overall Condition."
 ;
 
 *
@@ -173,18 +213,29 @@ run;
 
 proc reg data= ames_housing_analytic_file;
    model Log_SalePrice = Lot_Area
-		Overall_Cond
-		Total_Bsmt_SF
-		Full_Bath
-        Bedroom_AbvGr
-		TotRms_AbvGrd
-        Year_Built
-        Fireplaces
-        Wood_Deck_SF
-        Open_Porch_SF
-        Pool_Area
-        Garage_Area
-		SalePrice/ selection = stepwise sls = 0.1 sle = 0.1;
+		                 Overall_Cond
+		                 Total_Bsmt_SF
+		                 Full_Bath
+                         Bedroom_AbvGr
+		                 TotRms_AbvGrd
+                         Year_Built
+                         Fireplaces
+                         Wood_Deck_SF     
+                         Open_Porch_SF
+                         Pool_Area
+                         Garage_Area / selection = stepwise sle = 0.1 sls = 0.1;
+	label Lot_Area = 'Lot size in square feet'
+	     Overall_Cond = 'Rates the overall material and finish of the house'
+	     Total_Bsmt_SF = 'Total square feet of basement area'
+	    Full_Bath = 'Full bathrooms above grade'
+        Bedroom_AbvGr = 'Bedrooms above grade'
+	    TotRms_AbvGrd = 'Total rooms above grade'
+        Year_Built = 'Original construction year'
+        Fireplaces = 'Number of fireplaces'
+        Wood_Deck_SF = 'Wood deck area in square feet'
+        Open_Porch_SF = 'Open porch area in square feet'
+        Pool_Area = 'Pool area in square feet'
+        Garage_Area = 'Size of garage in square feet';
 run;
 
 title;
@@ -194,8 +245,7 @@ footnote;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1
-"Research Question: How does the selling price vary with the number of rooms (bedrooms, bathrooms and total rooms) in a house 
-and how many of each are preferred by homebuyers?"
+"Research Question: What are the preferred number of rooms for homebuyers and how does the selling price vary with the number of rooms (bedrooms, bathrooms and total rooms) in a house?"
 ;
 
 title2
@@ -207,7 +257,19 @@ footnote1
 ;
 
 footnote2
-"The scatterplots show that the Sale Price increases with increase in the number of rooms."
+"The scatterplots show that overall, the Sale Price increases with increase in the number of rooms."
+;
+
+footnote3
+"The sctterplot Sale Price vs Number of bedrooms show that the selling price increases with number of bedrooms but starts decreasing when number is 5 and above. Also, the regression line is not very steep showing that the increase in selling price is rising at a much slower rate." 
+;
+
+footnote4
+"The plot Sale Price vs Number of bathrooms show that the selling price is increasing sharply with number of bathrooms but starts decreasing after 4 and above."
+;
+
+footnote5
+"The scatterplot Sale Price vs Total number of rooms shows that the selling price is increasing with the number of rooms but starts decreasing for 11 and above. A steep regression line shows that the rate of increase is high."
 ;
 
 *
