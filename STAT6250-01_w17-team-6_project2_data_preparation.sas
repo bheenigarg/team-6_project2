@@ -196,6 +196,30 @@ proc format ;
 		   
    value $cafmt 'Y' = '1'
 	        'N'  = '0';
+
+   value $neighborfmt 'Blmngtn' = "Bloomington Heights"
+                      'Blueste' =	"Bluestem"
+                      'BrDale'  =	"Briardale"
+                      'BrkSide' = "Brookside"
+                      'ClearCr' = "Clear Creek"
+       		      'CollgCr' = "College Creek"
+       		      'Crawfor'	= "Crawford"
+       		      'GrnHill' = "Green Hills"
+       		      'IDOTRR'	= "Iowa DOT and Rail Road"
+       		      'Landmrk' = "Landmark"
+                      'MeadowV'	= "Meadow Village"
+                      'Mitchel'	= "Mitchell"
+                      'NAmes'	= "North Ames"
+                      'NoRidge'	= "Northridge"
+                      'NPkVill'	= "Northpark Villa" 
+                      'NridgHt' = "Northridge Heights"
+                      'NWAmes'	= "Northwest Ames"
+      		      'OldTown'	= "Old Town"
+       		      'SWISU'	= "South & West of Iowa State University"
+       		      'SawyerW' = "Sawyer West"
+      		      'Somerst' = "Somerset"
+      		      'StoneBr' = "Stone Brook"
+       		      'Timber' = "Timberland" ;
 		  
 run;
 
@@ -219,7 +243,7 @@ data ames_housing_analytic_file;
         Neighborhood
 	Lot_Area
 	Land_Slope
-	Central_Air
+        Central_Air
 	Bldg_Type
 	House_Style
 	Overall_Cond
