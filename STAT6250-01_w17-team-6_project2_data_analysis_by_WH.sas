@@ -47,7 +47,7 @@ directory, if using Windows;
 
 title1
 "Question: What is the average sale price of properties sold in Ames, Iowa
-between AY 2006-2008 and AY 2009-2010?"
+between AY 2006-2008 and 2009-2010?"
 ;
 
 title2
@@ -63,7 +63,7 @@ a property was $12,789 and maximum price sold was $755,000."
 
 footnote2
 "Out of 2,930 observation properties sold in Ames, IA, the average sales price 
-is $180,796.06."
+is about $180,796.06."
 ;
 
 footnote3
@@ -91,7 +91,7 @@ footnote;
 
 title1
 "Question: What are the top 3 type of exterior covering on house in Ames, Iowa 
-that was involved in a sale between AY 2006-2008 and AY 2009-2010?"
+that was involved in a sale between AY 2006-2008 and 2009-2010?"
 ;
 
 title2
@@ -117,7 +117,7 @@ Data2."
 *
 Methodology: With utilizing ames_housing_analytic_file, PROC FREQ will be used
 to obtain the percentages of column "Exterior_1st". In this way, the top 3 type 
-of exterior covering can be shown.
+of exterior covering sold can be shown.
 ;
 
 proq freq data = ames_housing_analytic_file order=freq;
@@ -132,7 +132,7 @@ footnote;
 *******************************************************************************;
 
 title1
-"Question: Is there any correlation between an Open Porch and SalePrice of 
+"Question: Is there any correlation between an Open Porch and Sale Price of 
 properties sold? If there is any correlation, please explain the correlation?"
 ;
 
@@ -143,7 +143,7 @@ SalePrice of sold properties in Ames, IA AY 2006-2010."
 
 footnote1
 "Open Porch had an average of 47.53 square feet sold and Sale Price had an 
-average of $180,796 sold"
+average of $180,796 sold."
 ;
 
 footnote2
