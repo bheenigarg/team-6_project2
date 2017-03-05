@@ -182,7 +182,7 @@ data ames_housing_2006_2010;
 run;
 
 proc format ;
-  value spfmt low- 99999 = 'Less than $100,000'
+  value spfmt         low - 99999  = 'Less than $100,000'
 	           100000 - 199999 = '$100,000 to $199,999'
 	           200000 - 299999 = '$200,000 to $299,999'
 		   300000 - 399999 = '$300,000 to $399,999'
@@ -192,10 +192,10 @@ proc format ;
 		   700000 - 799999 = '$700,000 to $799,999'
 		   800000 - 899999 = '$800,000 to $899,999'
 		   900000 - 999999 = '$900,000 to $999,999'
-		   1000000 - high = 'More than $1 million';
+		  1000000 - high   = 'More than $1 million';
 		   
    value $cafmt 'Y' = '1'
-	        'N'  = '0';
+	        'N'  ='0';
 
    value $neighborfmt 'Blmngtn' = "Bloomington Heights"
                       'Blueste' = "Bluestem"
@@ -219,7 +219,7 @@ proc format ;
        		      'SawyerW' = "Sawyer West"
       		      'Somerst' = "Somerset"
       		      'StoneBr' = "Stone Brook"
-       		      'Timber' = "Timberland" ;
+       		      'Timber'  = "Timberland" ;
 		  
 run;
 
