@@ -198,8 +198,8 @@ proc format ;
 	        'N'  = '0';
 
    value $neighborfmt 'Blmngtn' = "Bloomington Heights"
-                      'Blueste' =	"Bluestem"
-                      'BrDale'  =	"Briardale"
+                      'Blueste' = "Bluestem"
+                      'BrDale'  = "Briardale"
                       'BrkSide' = "Brookside"
                       'ClearCr' = "Clear Creek"
        		      'CollgCr' = "College Creek"
