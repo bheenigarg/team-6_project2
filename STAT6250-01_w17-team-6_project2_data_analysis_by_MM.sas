@@ -71,8 +71,6 @@ footnote4
 Methodology: Use PROC CORR to determine the correlation between the number of cars that can fit in the garage, total garage space, and the sale price.
 ;
 
-*footnote1;
-
 proc corr data = ames_housing_analytic_file;
     var SalePrice
         Garage_Area
@@ -117,8 +115,6 @@ footnote5
 Methodology: Use PROC FREQ to view the frequency of central air with the sale price range of the homes.
 ;
 
-*footnote1;
-
 proc freq data = ames_housing_analytic_file;
           tables SalePrice*Central_Air/nocum norow nocol;
           format SalePrice spfmt.
@@ -138,16 +134,16 @@ title2
 "Rationale: If the overall condition rating significantly affects the sale price of the home, this can be used to price future homes, as well as inform homeowners how to improve the condition of their home to increase the value."
 ;
 
-*
-Methodology: Use PROC CORR to view the overall conditions ratings that are associated with sale prices of homes.
-;
-
 footnote1
 "With the results indicating a slightly negative correlation, we can determine that the overall condition rating is not helpful in reaching the sale price"
 ;
 
 footnote2
 "This data suggests that if the goal is to have an overall condition rating that helps to price the home, the system for rating the condition should be re-evaluated."
+;
+
+*
+Methodology: Use PROC CORR to view the overall conditions ratings that are associated with sale prices of homes.
 ;
 
 proc corr data = ames_housing_analytic_file;
