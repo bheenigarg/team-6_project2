@@ -44,10 +44,9 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-
+*IL: don't wrap string literals;
 title1
-"Question: What is the average sale price of properties sold in Ames, Iowa
-between AY 2006-2008 and 2009-2010?"
+"Question: What is the average sale price of properties sold in Ames, Iowa between AY 2006-2008 and 2009-2010?"
 ;
 
 title2
@@ -65,7 +64,9 @@ footnote2
 "Out of 2,930 observation properties sold in Ames, IA, the average sales price 
 is about $180,796.06."
 ;
-
+*IL: be careful when copying/pasting from a source with smart quotes, like Word;
+*IL: convert statements about data-prep to comments because they're not
+     necessary to the analysis narrative;
 footnote3
 "This compares the column “SalePrice” in Data1 to the same column in 
 Data2."
@@ -75,9 +76,11 @@ Data2."
 Methodology: With ames_housing_analytic_file, use PROC MEANS on column 
 "SalePrice" and obtain the average sale price of properties sold in Ames, IA.
 ;
- 
-proc means data = ames_housing_analytic_file;
+*IL: use a format for currency;
+*IL: consider using a five-number summary in addition to a 2-number summary;
+proc means min q1 median q3 max mean std data = ames_housing_analytic_file;
     var SalePrice;
+    format SalePrice dollar12.2;
 run;
 
 

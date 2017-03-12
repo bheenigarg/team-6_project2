@@ -70,7 +70,7 @@ footnote3
 footnote4
 "It can also be noted that many of the rich neighborhoods have high variability in sale prices which means that they have sale prices varying from relatively low to very high."
 ;
-
+*IL: wrap comments at 80 characters;
 *
 Methodology: Proc means is used to calculate the average selling price in each neighborhood. 
 Proc sort and print is used to sort and print the means in descending order. 
@@ -95,10 +95,11 @@ run;
 
 proc print data=ames_housing_temp;
     var Neighborhood SalePrice;
-	format Neighborhood $neighborfmt. ;
+    format Neighborhood $neighborfmt. ;
+    format SalePrice dollar12.2;
 run;
 
-
+*IL: ods graphics on/off are not necessary;
 ods graphics on/ height=8in;
 proc sgplot data = ames_housing_analytic_file;
     hbox SalePrice/ category = Neighborhood;
@@ -144,33 +145,38 @@ footnote5
 Methodology: PROC CORR is used to calculate the correlation coefficients where Pearson 
 correlations are displayed. The correlations are calculated just for the numeric variables in the dataset.
 ;
+*IL: be consistent with indentation;
 proc corr data = ames_housing_analytic_file nosimple noprob best=7;
-    var Lot_Area
+    var
+        Lot_Area
         Overall_Cond
-	Total_Bsmt_SF
-	Full_Bath
+        Total_Bsmt_SF
+        Full_Bath
         Bedroom_AbvGr
-	TotRms_AbvGrd
+        TotRms_AbvGrd
         Year_Built
         Fireplaces
         Wood_Deck_SF
         Open_Porch_SF
         Pool_Area
         Garage_Area
-	SalePrice;
+        SalePrice
+    ;
 
-    label Lot_Area = 'Lot size in square feet'
-	  Overall_Cond = 'Rates the overall material and finish of the house'
-	  Total_Bsmt_SF = 'Total square feet of basement area'
-	  Full_Bath = 'Full bathrooms above grade'
-          Bedroom_AbvGr = 'Bedrooms above grade'
-	  TotRms_AbvGrd = 'Total rooms above grade'
-          Year_Built = 'Original construction year'
-          Fireplaces = 'Number of fireplaces'
-          Wood_Deck_SF = 'Wood deck area in square feet'
-          Open_Porch_SF = 'Open porch area in square feet'
-          Pool_Area = 'Pool area in square feet'
-          Garage_Area = 'Size of garage in square feet';
+    label
+        Lot_Area = 'Lot size in square feet'
+        Overall_Cond = 'Rates the overall material and finish of the house'
+        Total_Bsmt_SF = 'Total square feet of basement area'
+        Full_Bath = 'Full bathrooms above grade'
+        Bedroom_AbvGr = 'Bedrooms above grade'
+        TotRms_AbvGrd = 'Total rooms above grade'
+        Year_Built = 'Original construction year'
+        Fireplaces = 'Number of fireplaces'
+        Wood_Deck_SF = 'Wood deck area in square feet'
+        Open_Porch_SF = 'Open porch area in square feet'
+        Pool_Area = 'Pool area in square feet'
+        Garage_Area = 'Size of garage in square feet'
+    ;
 run;
 title;
 footnote;
@@ -213,23 +219,23 @@ run;
 
 proc reg data= ames_housing_analytic_file;
    model Log_SalePrice = Lot_Area
-		         Overall_Cond
-		         Total_Bsmt_SF
-		         Full_Bath
+                 Overall_Cond
+                 Total_Bsmt_SF
+                 Full_Bath
                          Bedroom_AbvGr
-		         TotRms_AbvGrd
+                 TotRms_AbvGrd
                          Year_Built
                          Fireplaces
                          Wood_Deck_SF     
                          Open_Porch_SF
                          Pool_Area
                          Garage_Area / selection = stepwise sle = 0.1 sls = 0.1;
-	label Lot_Area = 'Lot size in square feet'
-	      Overall_Cond = 'Rates the overall material and finish of the house'
-	      Total_Bsmt_SF = 'Total square feet of basement area'
-	      Full_Bath = 'Full bathrooms above grade'
+    label Lot_Area = 'Lot size in square feet'
+          Overall_Cond = 'Rates the overall material and finish of the house'
+          Total_Bsmt_SF = 'Total square feet of basement area'
+          Full_Bath = 'Full bathrooms above grade'
               Bedroom_AbvGr = 'Bedrooms above grade'
-	      TotRms_AbvGrd = 'Total rooms above grade'
+          TotRms_AbvGrd = 'Total rooms above grade'
               Year_Built = 'Original construction year'
               Fireplaces = 'Number of fireplaces'
               Wood_Deck_SF = 'Wood deck area in square feet'
@@ -280,11 +286,11 @@ The relation between Sale Price and number of each typpe of rooms is plotted usi
 proc freq data = ames_housing_analytic_file order=freq;
    table Bedroom_AbvGr/ nocum nopercent;
 run;
-
+*IL: be consistent with capitalization;
 Proc sgplot data = ames_housing_analytic_file noautolegend;
    reg y = SalePrice x = Bedroom_AbvGr;
 run;
-		
+        
 proc freq data = ames_housing_analytic_file order=freq;
    table Full_Bath/ nocum nopercent;
 run;

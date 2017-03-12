@@ -66,7 +66,7 @@ footnote3
 footnote4
 "Because the number of cars has a slightly higher correlation, it may be more suitable for using to price homes over the actual area of the garage."
 ;
-
+*IL: wrap comments at 80 characters;
 *
 Methodology: Use PROC CORR to determine the correlation between the number of cars that can fit in the garage, total garage space, and the sale price.
 ;
@@ -114,7 +114,7 @@ footnote5
 *
 Methodology: Use PROC FREQ to view the frequency of central air with the sale price range of the homes.
 ;
-
+*IL: consider a different percentage than table-level;
 proc freq data = ames_housing_analytic_file;
           tables SalePrice*Central_Air/nocum norow nocol;
           format SalePrice spfmt.
